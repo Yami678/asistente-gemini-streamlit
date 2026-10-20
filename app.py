@@ -92,7 +92,7 @@ if st.session_state.turn_count == 0 and not st.session_state.interview_finished:
     prompt_inicial = f"Hola. Postulo a la vacante de {st.session_state.vacante}. Da la bienvenida en una frase e inicia la entrevista haciéndome la Pregunta #1."
     
     response = client.models.generate_content(
-        model="gemini-1.5-flash",
+        model="gemini-2.0-flash",
         contents=prompt_inicial,
         config=types.GenerateContentConfig(
             system_instruction=SYSTEM_INSTRUCTION,
@@ -139,7 +139,7 @@ if not st.session_state.interview_finished:
 
                 {conversacion_texto}
 
-                Por favor, genera un reporte estructurado estrictamente en el siguiente formato Markdown:
+                Por favor, genera un reporte estructurado strictly en el siguiente formato Markdown:
 
                 # 📋 Reporte de Evaluación Técnica - {st.session_state.vacante}
 
@@ -159,7 +159,7 @@ if not st.session_state.interview_finished:
                 """
 
                 evaluacion = client.models.generate_content(
-                    model="gemini-1.5-flash",
+                    model="gemini-2.0-flash",
                     contents=prompt_reporte,
                     config=types.GenerateContentConfig(
                         temperature=0.2
@@ -184,7 +184,7 @@ if not st.session_state.interview_finished:
                 contents.append(types.Content(role="user", parts=[types.Part.from_text(text=instruccion_turno)]))
 
                 response = client.models.generate_content(
-                    model="gemini-2.5-flash",
+                    model="gemini-2.0-flash",
                     contents=contents,
                     config=types.GenerateContentConfig(
                         system_instruction=SYSTEM_INSTRUCTION,
