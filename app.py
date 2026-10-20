@@ -159,7 +159,7 @@ if not st.session_state.interview_finished:
                 """
 
                 evaluacion = client.models.generate_content(
-                    model="gemini-2.0-flash",
+                    model="gemini-3.8-flash",
                     contents=prompt_reporte,
                     config=types.GenerateContentConfig(
                         temperature=0.2
@@ -184,7 +184,7 @@ if not st.session_state.interview_finished:
                 contents.append(types.Content(role="user", parts=[types.Part.from_text(text=instruccion_turno)]))
 
                 response = client.models.generate_content(
-                    model="gemini-2.0-flash",
+                    model="gemini-3.8-flash",
                     contents=contents,
                     config=types.GenerateContentConfig(
                         system_instruction=SYSTEM_INSTRUCTION,
